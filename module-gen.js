@@ -9,6 +9,9 @@ import {
 import {
     generateUrl
 } from "./module-url-gen.js";
+import {
+    generateComponent
+} from "./component.gen.js";
 
 //read blueprint
 let paresedData = readJsonFile("blueprint.json");
@@ -64,6 +67,7 @@ paresedData.modules.forEach((module) => {
     output += `\nexport class ${capitaliseFirstWord(module.name)}Module { }`;
     generateRoutingModule(module);
     generateUrl(module);
+    generateComponent(module);
 
 
     writeToFile(`output/${module.name}`, `${module.name}.module.ts`, output);

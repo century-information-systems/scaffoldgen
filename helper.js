@@ -18,6 +18,10 @@ export function removeHyphen(word) {
     return word.replace(/-/g, (str) => "");
 }
 
+export function splitByWord(string) {
+    return string.match(/\w+/g);
+}
+
 export function writeToFile(path, filename, content) {
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path);
