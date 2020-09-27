@@ -14,6 +14,25 @@
                     "name": "employee-profile"
                 }
             ]
+        },
+        {
+            "name": "leave",
+            "components": [{
+                    "name": "dashboard"
+                },
+                {
+                    "name": "leave-view"
+                },
+                {
+                    "name": "leaveapplication"
+                },
+                {
+                    "name": "leave-report"
+                },
+                {
+                    "name": "leave"
+                }
+            ]
         }
 
     ]

@@ -4,7 +4,7 @@ const fs = require('fs')
 let data = fs.readFileSync('blueprint.json');
 
 let paresedData = JSON.parse(data);
-let genereatedMoudule = 'import { NgModule } from \'@angular/core\';' +
+let anuglarImports = 'import { NgModule } from \'@angular/core\';' +
     '\nimport { CommonModule } from \'@angular/common\';' +
     '\nimport { SharedModule } from \'../shared.module\';' +
     '\nimport { FormsModule } from \'@angular/forms\';' +
@@ -12,10 +12,12 @@ let genereatedMoudule = 'import { NgModule } from \'@angular/core\';' +
     '\nimport { MatStepperModule, MatIconModule, MatTableModule, MatSortModule, MatPaginatorModule } from \'@angular/material\';' +
     '\nimport { DxSelectBoxModule, DxTextAreaModule, DxDateBoxModule, DxFormModule, DxDataGridModule, DxSpeedDialActionModule, DxPivotGridModule } from \'devextreme-angular\';';
 
-let imports = [];
-let declarations = [];
+
 // go through each module
 paresedData.modules.forEach(module => {
+    let output = anuglarImports;
+    let imports = [];
+    let declarations = [];
     console.log(module);
     // imports
     let routingModule = `${capitaliseFirstWord(module.name)}RoutingModule`;
@@ -29,9 +31,9 @@ paresedData.modules.forEach(module => {
         declarations.push(cmp);
     });
 
-    genereatedMoudule += componentImport;
+    output += componentImport;
 
-    genereatedMoudule += `\n@NgModule({
+    output += `\n@NgModule({
         imports: [
             CommonModule,
             ${imports},
@@ -51,11 +53,10 @@ paresedData.modules.forEach(module => {
     })`;
 
 
-    genereatedMoudule += `\nexport class ${capitaliseFirstWord(module.name)}Module { }`
+    output += `\nexport class ${capitaliseFirstWord(module.name)}Module { }`
 
 
-
-    fs.writeFile(`${module.name}.module.ts`, genereatedMoudule, (err) => {
+    fs.writeFile(`output/${module.name}.module.ts`, output, (err) => {
 
         // In case of a error throw err. 
         if (err) throw err;
