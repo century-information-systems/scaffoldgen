@@ -1,0 +1,20 @@
+{
+    "modules": [{
+            "name": "employee",
+            "components": [{
+                    "name": "dashboard"
+                },
+                {
+                    "name": "employee"
+                },
+                {
+                    "name": "employee-data"
+                },
+                {
+                    "name": "employee-profile"
+                }
+            ]
+        }
+
+    ]
+}
