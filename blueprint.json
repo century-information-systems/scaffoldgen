@@ -2,7 +2,7 @@
     "modules": [{
             "name": "employee",
             "components": [{
-                    "name": "dashboard"
+                    "name": "dashboard"                    
                 },
                 {
                     "name": "employee"

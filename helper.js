@@ -24,7 +24,9 @@ export function splitByWord(string) {
 
 export function writeToFile(path, filename, content) {
     if (!fs.existsSync(path)) {
-        fs.mkdirSync(path);
+        fs.mkdirSync(path, {
+            recursive: true
+        });
     }
     fs.writeFile(path + "/" + filename, content, (err) => {
         // In case of a error throw err.
